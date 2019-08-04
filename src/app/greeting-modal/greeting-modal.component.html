@@ -1,0 +1,8 @@
+
+<div class="modal-content">
+  <label for="player-name">Привет! Как тебя зовут?</label>
+
+  <input id="player-name" type="text" placeholder="Напиши свое имя..." [(ngModel)]="playerName" />
+
+  <button class="btn btn-primary" type="button" (click)="onSetPlayerName()" [disabled]="!playerName">Давай играть!</button>
+</div>

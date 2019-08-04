@@ -1,0 +1,55 @@
+<div class="modal-content">
+  <h2>Результаты</h2>
+  <div class="result-table">
+    <div>
+      <p>Ваш выбор:</p>
+      <app-game-element
+        [element]="playerSelection ? playerSelection : 'EMPTY'"
+      ></app-game-element>
+      <p> {{ playerSelection ? playerSelection : 'Ничего не выбрано' }}</p>
+    </div>
+    <b>vs</b>
+    <div>
+      <p>Выбор компьютера:</p>
+      <app-game-element
+        [element]="computerSelection"
+      ></app-game-element>
+      <p> {{ computerSelection }}</p>
+    </div>
+  </div>
+
+  <div *ngIf="result.SELF_LOSS === gameResult">
+    <p><strong>{{ playerName }}</strong>, ты проиграл по неактивности.</p>
+    <button type="button" class="btn btn-primary"
+      (click)="hideResults()"
+    >Понятно...</button>
+  </div>
+
+  <div *ngIf="result.LOSS === gameResult">
+    <p>Cпасибо, <strong>{{ playerName }}</strong>, но ты проиграл.</p>
+    <button type="button" class="btn btn-primary"
+      (click)="hideResults()"
+    >Понятно...</button>
+  </div>
+
+  <div *ngIf="result.WIN === gameResult">
+    <p>Tы достойный противник, <strong>{{ playerName }}</strong>! Ты победил!</p>
+    <button type="button" class="btn btn-primary"
+      (click)="hideResults()"
+    >Понятно!</button>
+  </div>
+
+  <div *ngIf="result.DRAW === gameResult">
+    <p>Ничья - сыграем еще раз?</p>
+
+    <div>
+      <button type="button" class="btn btn-primary-outline"
+        (click)="hideResults()"
+      >Не хочу</button>
+
+      <button type="button" class="btn btn-primary"
+        (click)="hideResults(true)"
+      >Давай!</button>
+    </div>
+  </div>
+</div>

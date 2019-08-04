@@ -1,0 +1,12 @@
+<div class="palayer-box">
+  <button type="button"
+    [class.selected]="selectedElement === element"
+    *ngFor="let element of elementsList"
+    (click)="onSelectElement(element)"
+    [disabled]="disabled"
+  >
+    <app-game-element
+      [element]="element"
+    ></app-game-element>
+  </button>
+</div>

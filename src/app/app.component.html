@@ -1,0 +1,39 @@
+<main>
+  <h1>КАМЕНЬ • НОЖНИЦЫ • БУМАГА</h1>
+  <p style="text-align: center;"><a href="http://interesko.info/kamen-nozhnicy-bumaga-ot-prostogo-k-slozhnomu/" target="_blank">Правила</a></p>
+  <div *ngIf="playerName" class="header">
+    <button *ngIf="!gameStarted" type="button" class="btn btn-primary" (click)="startGame()">Начать игру</button>
+    <div *ngIf="gameStarted && !result">Осталось: {{ timer }} c.</div>
+    <div *ngIf="result"> Игра окончена. <strong>{{ result }}</strong></div>
+  </div>
+
+  <div class="game-content" *ngIf="gameStarted">
+    <app-player-box
+      [timer]="timer"
+      [elementsList]="elementsList"
+      [playNewGame]="playNewGame"
+      (playerSelection)="onPlayerSelection($event)"
+    ></app-player-box>
+    <b>vs</b>
+    <app-computer-box
+      [timer]="timer"
+      [count]="elementsCount"
+      [playNewGame]="playNewGame"
+      (computerSelection)="onComputerSelection($event)"
+    ></app-computer-box>
+  </div>
+
+  <app-greeting-modal
+    *ngIf="!playerName"
+    (setPlayerName)="setPlayerName($event)"
+  ></app-greeting-modal>
+
+  <app-results-modal
+    *ngIf="showResultModal"
+    [playerName]="playerName"
+    [gameResult]="result"
+    [computerSelection]="computerSelection"
+    [playerSelection]="playerSelection"
+    (startNewGame)="onStartNewGame($event)"
+  ></app-results-modal>
+</main>

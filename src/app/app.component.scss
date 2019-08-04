@@ -1,0 +1,27 @@
+:host {
+  display: block;
+}
+
+main {
+  padding: 16px;
+}
+
+h1 {
+  text-align: center;
+}
+
+.header {
+  margin-top: 16px;
+  text-align: center;
+}
+
+.game-content {
+  display: grid;
+  grid-template-columns: 3fr auto 1fr;
+  column-gap: 32px;
+  align-items: center;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 32px;
+}
